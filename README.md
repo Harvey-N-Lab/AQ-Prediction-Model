@@ -1,10 +1,13 @@
 # Air Quality Prediction Model
 
-Glue ETL and model training templates for AQI prediction.
+Machine learning service repo containing:
+- **Training** (`training/train_xgb.py`): XGBoost regression to predict next-hour PM2.5.
+- **Deployment** (`deploy/scripts` + GitHub Actions): Create/Update SageMaker Endpoint.
 
-- `glue/etl_job.py`: Transform raw OpenAQ + OpenWeather to Parquet with lag/rolling features.
-- `training/train_xgb.py`: Local/SageMaker-compatible XGBoost training script.
-- `pipelines/` and `registry/`: placeholders for SageMaker AMT + Model Registry automation.
+Provide these GitHub secrets:
+- `AWS_IAM_ROLE` (OIDC deploy role ARN)
+- `SM_EXEC_ROLE` (SageMaker execution role ARN)
+- `MODEL_TAR_S3` (S3 URI to model artifact)
 
 # Overall Architecture 
 
