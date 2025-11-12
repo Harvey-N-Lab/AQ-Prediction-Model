@@ -1,7 +1,7 @@
 experiment:
   name: "aqi_xgb_baseline"
   seed: 42
-  target: "target_pm25_next_1h"
+  target: "target_pm25_next_30m"
 
 data:
   # can be: local parquet/csv or s3://... (s3fs supported)
@@ -10,8 +10,11 @@ data:
   features:
     include:
       - pm25
-      - pm25_lag_1h
-      - pm25_roll_mean_6h
+      - pm25_lag_15m
+      - pm25_lag_30m
+      - pm25_lag_60m
+      - pm25_roll_mean_60m
+      - pm25_roll_std_60m
       - temp
       - humidity
       - wind_speed
