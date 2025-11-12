@@ -1,6 +1,7 @@
 import boto3, json, os
 smr = boto3.client("sagemaker-runtime", region_name=os.environ.get("AWS_REGION","ap-southeast-1"))
 ep = os.environ.get("ENDPOINT_NAME","aqi-xgb-endpoint")
+
 payload = {
   "station_id":"VN_Hanoi_001","ts":1731324000.0,
   "pm25":52.0,"pm25_lag_1h":49.5,"pm25_roll_mean_6h":47.8,

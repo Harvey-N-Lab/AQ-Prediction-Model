@@ -1,14 +1,19 @@
 # Air Quality Prediction Model
 
-Machine learning service repo containing:
-- **Training** (`training/train_xgb.py`): XGBoost regression to predict next-hour PM2.5.
-- **Deployment** (`deploy/scripts` + GitHub Actions): Create/Update SageMaker Endpoint.
+End-to-end ML service for AQI forecasting, designed for **local** and **AWS** training with clean layering:
 
-Provide these GitHub secrets:
-- `AWS_IAM_ROLE` (OIDC deploy role ARN)
-- `SM_EXEC_ROLE` (SageMaker execution role ARN)
-- `MODEL_TAR_S3` (S3 URI to model artifact)
+- **Ports & Adapters**: abstract storage and trainer; swap local/S3 or XGBoost/other easily.
+- **Config-first**: YAML + env override via Pydantic.
+- **CLI**: train, evaluate, package.
 
-# Overall Architecture 
+## Quick start
+
+```bash
+python -m pip install -e .
+python scripts/train.py --config scripts/local_example.yaml
+python scripts/evaluate.py --config scripts/local_example.yaml
+python scripts/package_model.py --artifacts out/model --output out/model.tar.gz
+
+# High Level Architecture 
 
 ![alt text](images/architecture.png "Overall Architecture")
