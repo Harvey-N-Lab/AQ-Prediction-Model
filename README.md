@@ -13,7 +13,7 @@ python -m pip install -e .
 python scripts/train.py --config scripts/local_example.yaml
 python scripts/evaluate.py --config scripts/local_example.yaml
 python scripts/package_model.py --artifacts out/model --output out/model.tar.gz
-
+```
 # High Level Architecture 
 
 ![alt text](images/architecture.png "Overall Architecture")
